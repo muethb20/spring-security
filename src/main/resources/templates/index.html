@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Journey</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    nav {
+      background-color: #4CAF50;
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      text-align: center;
+
+      box-sizing: border-box;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+
+    nav div ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav div ul li {
+      display: inline;
+    }
+
+    nav div ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav div ul li a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-top: 3vh;
+
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: #444;
+      margin-bottom: 0;
+      font-size: large;
+    }
+
+
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/">Registration and Login System</a>
+  <div>
+    <ul>
+      <li><a href="/user/register">Register</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section>
+  <h1>Welcome to the Task assignment System! </h1>
+  <h2>Login <a href="/login">here</a></h2>
+</section>
+</body>
+</html>

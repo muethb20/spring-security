@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem 2rem;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .card h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        .card .delete-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card .delete-button:hover {
+            background-color: #c0392b;
+        }
+
+        .card .delete-button::before {
+            content: '✔';
+            margin-right: 0.5rem;
+        }
+
+        .no-todos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .no-todos img {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div><a href="/">Your assigned tasks</a></div>
+    <div>
+        <ul>
+            <li><a th:href="@{/user/register}">Register</a></li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<section>
+    <h1>Todos</h1>
+    <div class="card-container">
+        <div th:if="${#lists.isEmpty(todos)}" class="no-todos">
+            <img th:src="@{/sad_yoda.gif}" alt="Sad Yoda"/>
+            <div>No Todos yet</div>
+        </div>
+        <div class="card" th:each="todo : ${todos}">
+            <h2 th:text="${todo.title}">Title</h2>
+            <p th:text="${todo.description}">Description</p>
+            <a class="delete-button" th:href="@{/todo/remove(todoId=${todo.id})}"></a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
